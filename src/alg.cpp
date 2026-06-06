@@ -24,7 +24,8 @@ double calcItem(double x, uint16_t n) {
 
 double expn(double x, uint16_t count) {
     double sum = 0.0;
-    for (uint16_t n = 0; n <= count; ++n) {
+    // Суммируем count членов: от n=0 до n=count-1
+    for (uint16_t n = 0; n < count; ++n) {
         sum += calcItem(x, n);
     }
     return sum;
@@ -32,7 +33,7 @@ double expn(double x, uint16_t count) {
 
 double sinn(double x, uint16_t count) {
     double sum = 0.0;
-    for (uint16_t n = 0; n <= count; ++n) {
+    for (uint16_t n = 0; n < count; ++n) {
         uint16_t power = 2 * n + 1;
         double term = pown(x, power) / static_cast<double>(fact(power));
         if (n % 2 == 1) {
@@ -45,7 +46,7 @@ double sinn(double x, uint16_t count) {
 
 double cosn(double x, uint16_t count) {
     double sum = 0.0;
-    for (uint16_t n = 0; n <= count; ++n) {
+    for (uint16_t n = 0; n < count; ++n) {
         uint16_t power = 2 * n;
         double term = pown(x, power) / static_cast<double>(fact(power));
         if (n % 2 == 1) {
