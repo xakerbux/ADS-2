@@ -1,4 +1,5 @@
 // Copyright 2022 NNTU-CS
+
 #include <cstdint>
 #include "alg.h"
 
@@ -24,7 +25,6 @@ double calcItem(double x, uint16_t n) {
 
 double expn(double x, uint16_t count) {
     double sum = 0.0;
-    // Суммируем от n=0 до n=count (включительно) — всего count+1 членов
     for (uint16_t n = 0; n <= count; ++n) {
         sum += calcItem(x, n);
     }
@@ -33,7 +33,6 @@ double expn(double x, uint16_t count) {
 
 double sinn(double x, uint16_t count) {
     double sum = 0.0;
-    // Для синуса: степени 1,3,5,... до 2*count+1
     for (uint16_t n = 0; n <= count; ++n) {
         uint16_t power = 2 * n + 1;
         double term = pown(x, power) / static_cast<double>(fact(power));
@@ -47,7 +46,6 @@ double sinn(double x, uint16_t count) {
 
 double cosn(double x, uint16_t count) {
     double sum = 0.0;
-    // Для косинуса: степени 0,2,4,... до 2*count
     for (uint16_t n = 0; n <= count; ++n) {
         uint16_t power = 2 * n;
         double term = pown(x, power) / static_cast<double>(fact(power));
