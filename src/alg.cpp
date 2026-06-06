@@ -3,7 +3,7 @@
 
 double pown(double value, uint16_t n) {
     double result = 1.0;
-    for (uint16_t i = 0; i < n; i++) {
+    for (uint16_t i = 0; i < n; ++i) {
         result *= value;
     }
     return result;
@@ -11,19 +11,19 @@ double pown(double value, uint16_t n) {
 
 uint64_t fact(uint16_t n) {
     uint64_t result = 1;
-    for (uint16_t i = 2; i <= n; i++) {
+    for (uint16_t i = 2; i <= n; ++i) {
         result *= i;
     }
     return result;
 }
 
 double calcItem(double x, uint16_t n) {
-    return pown(x, n) / (double)fact(n);
+    return pown(x, n) / static_cast<double>(fact(n));
 }
 
 double expn(double x, uint16_t count) {
-    double sum = 0.0;
-    for (uint16_t n = 0; n < count; n++) {
+    double sum = 1.0;  // n = 0: x^0/0! = 1
+    for (uint16_t n = 1; n < count; ++n) {
         sum += calcItem(x, n);
     }
     return sum;
@@ -31,9 +31,9 @@ double expn(double x, uint16_t count) {
 
 double sinn(double x, uint16_t count) {
     double sum = 0.0;
-    for (uint16_t n = 0; n < count; n++) {
+    for (uint16_t n = 0; n < count; ++n) {
         uint16_t power = 2 * n + 1;
-        double term = pown(x, power) / (double)fact(power);
+        double term = pown(x, power) / static_cast<double>(fact(power));
         if (n % 2 == 1) {
             term = -term;
         }
@@ -44,9 +44,9 @@ double sinn(double x, uint16_t count) {
 
 double cosn(double x, uint16_t count) {
     double sum = 0.0;
-    for (uint16_t n = 0; n < count; n++) {
+    for (uint16_t n = 0; n < count; ++n) {
         uint16_t power = 2 * n;
-        double term = pown(x, power) / (double)fact(power);
+        double term = pown(x, power) / static_cast<double>(fact(power));
         if (n % 2 == 1) {
             term = -term;
         }
