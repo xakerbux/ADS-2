@@ -1,6 +1,7 @@
-// Copyright 2022 NNTU-CS
+// Copyright 2025 NNTU-CS
 #ifndef INCLUDE_ALG_H_
 #define INCLUDE_ALG_H_
+
 #include <cstdint>
 
 double pown(double value, uint16_t n);
